@@ -1,6 +1,5 @@
 package uk.co.gregreynolds.photopastedemo;
 
-import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
