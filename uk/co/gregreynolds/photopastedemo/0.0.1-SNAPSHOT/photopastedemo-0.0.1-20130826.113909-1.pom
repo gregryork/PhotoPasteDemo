@@ -140,25 +140,34 @@
 				<groupId>com.github.github</groupId>
 				<artifactId>site-maven-plugin</artifactId>
 				<version>0.8</version>
-				<configuration>
-					<message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
-					<noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-					<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
-					<branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
-					<includes>
-						<include>**/*</include>
-					</includes>
-					<repositoryName>PhotoPasteDemo</repositoryName>      <!-- github repo name -->
-					<repositoryOwner>gregryork</repositoryOwner>    <!-- github username -->
-				</configuration>
 				<executions>
-					<!-- run site-maven-plugin's 'site' target as part of the build's normal 
-						'deploy' phase -->
 					<execution>
+						<id>maven-artifacts</id>
+						<configuration>
+							<message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+							<noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+							<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
+							<branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<repositoryName>PhotoPasteDemo</repositoryName>      <!-- github repo name -->
+							<repositoryOwner>gregryork</repositoryOwner>    <!-- github username -->
+						</configuration>
 						<goals>
 							<goal>site</goal>
 						</goals>
 						<phase>deploy</phase>
+					</execution>
+					<execution>
+						<id>maven-site</id>
+						<configuration>
+							<message>Creating site for ${project.version}</message>
+						</configuration>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
 					</execution>
 				</executions>
 			</plugin>
