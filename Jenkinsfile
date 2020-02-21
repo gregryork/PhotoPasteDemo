@@ -1,3 +1,7 @@
+def printSomeNumbers(){
+    println(1);
+}
+
 pipeline {
     agent any
     tools {
@@ -7,6 +11,7 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
+                printSomeNumbers()
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
