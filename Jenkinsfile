@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
+                script{
                 numbers = load "numbers.groovy"
                 numbers.printSomeNumbers()
                 numbers.printSomeNumbers2()
@@ -512,6 +513,7 @@ pipeline {
                 numbers.printSomeNumbers502()
                 numbers.printSomeNumbers503()
                 numbers.printSomeNumbers504()
+                }
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
